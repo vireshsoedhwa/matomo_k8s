@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: matomo-pvc
+  namespace: matomo
+spec:
+  storageClassName: matomo-sc
+  accessModes: [ReadWriteOnce]
+  resources: { requests: { storage: 1Gi } }

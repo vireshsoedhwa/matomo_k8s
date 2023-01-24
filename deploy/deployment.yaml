@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matomo-app
+  namespace: matomo
+spec:
+  selector:
+    matchLabels:
+      app: matomo-app
+  template:
+    metadata:
+      labels:
+        app: matomo-app
+    spec:
+      containers:
+        - name: matomo-app
+          image: matomo:4.13.1
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+          envFrom:
+          - configMapRef:
+              name: matomo-config
+          - secretRef:
+              name: matomodbsecret
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matomo-db
+  namespace: matomo
+spec:
+  selector:
+    matchLabels:
+      app: matomo-db
+  template:
+    metadata:
+      labels:
+        app: matomo-db
+    spec:
+      volumes:
+      - name: matomodb-volume
+        persistentVolumeClaim:
+          claimName: matomodb-pvc
+      containers:
+        - name: matomo-db
+          image: postgres:alpine
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+          ports:
+          - containerPort: 3306
+            protocol: TCP
+          envFrom:
+          - configMapRef:
+              name: matomodb-config
+          - secretRef:
+              name: matomodbsecret
+          volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: matomodb-volume

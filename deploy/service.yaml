@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: matomo-app-svc
+  namespace: matomo
+spec:
+  selector:
+    app: matomo-app-svc
+  ports:
+  - name: app
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  type: NodePort
+  
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: matomo-db-svc
+  namespace: matomo
+spec:
+  selector:
+    app: db
+  ports:
+  - name: db
+    protocol: TCP
+    port: 3306
+    targetPort: 3306
