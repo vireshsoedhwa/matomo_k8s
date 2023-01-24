@@ -19,6 +19,9 @@ spec:
             requests:
               memory: "64Mi"
               cpu: "250m"
+          ports:
+          - containerPort: 80
+            protocol: TCP
           envFrom:
           - configMapRef:
               name: matomo-config
