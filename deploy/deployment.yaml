@@ -56,8 +56,6 @@ spec:
           - containerPort: 3306
             protocol: TCP
           envFrom:
-          - configMapRef:
-              name: matomodb-config
           - secretRef:
               name: matomodbsecret
           volumeMounts:
