@@ -28,14 +28,16 @@ spec:
           env:
           - name: MATOMO_DATABASE_USERNAME
             valueFrom:
-              secretRef:
+              secretKeyRef:
                 name: matomodbsecret
                 key: MARIADB_USER
+                optional: false
           - name: MATOMO_DATABASE_PASSWORD
             valueFrom:
-              secretRef:
+              secretKeyRef:
                 name: matomodbsecret
                 key: MARIADB_PASSWORD
+                optional: false
 ---
 
 apiVersion: apps/v1
