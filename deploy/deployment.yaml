@@ -25,9 +25,17 @@ spec:
           envFrom:
           - configMapRef:
               name: matomo-config
-          - secretRef:
-              name: matomodbsecret
-
+          env:
+          - name: MATOMO_DATABASE_USERNAME
+            valueFrom:
+              secretRef:
+                name: matomodbsecret
+                key: MARIADB_USER
+          - name: MATOMO_DATABASE_PASSWORD
+            valueFrom:
+              secretRef:
+                name: matomodbsecret
+                key: MARIADB_PASSWORD
 ---
 
 apiVersion: apps/v1
