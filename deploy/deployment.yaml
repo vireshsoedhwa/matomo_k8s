@@ -47,7 +47,7 @@ spec:
           claimName: matomodb-pvc
       containers:
         - name: matomo-db
-          image: postgres:alpine
+          image: mariadb:10.9.4
           resources:
             requests:
               memory: "64Mi"
