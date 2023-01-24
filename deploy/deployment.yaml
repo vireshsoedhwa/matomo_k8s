@@ -74,3 +74,5 @@ spec:
           volumeMounts:
           - mountPath: /var/lib/mysql
             name: matomodb-volume
+          args:
+            - "--max-allowed-packet=67108864"
