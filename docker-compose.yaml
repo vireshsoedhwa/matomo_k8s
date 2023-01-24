@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:10.9.4
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+      MARIADB_DATABASE: owadb
+      MARIADB_USER: owauser
+      MARIADB_PASSWORD: owapassword
+
+  app:
+    image: matomo
+    # build:
+    #   context: .
+    #   args:
+    #     - VERSION=1.0.0
+    # volumes:
+    #   - .:/code
+    environment:
+      MATOMO_DATABASE_HOST: db
+      MATOMO_DATABASE_USERNAME: owauser
+      MATOMO_DATABASE_PASSWORD: owapassword
+      MATOMO_DATABASE_DBNAME: owadb
+    ports:
+      - "80:80"
+    depends_on:
+      - db
