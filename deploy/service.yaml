@@ -5,9 +5,9 @@ metadata:
   namespace: matomo
 spec:
   selector:
-    app: matomo-app-svc
+    app: matomo-app
   ports:
-  - name: app
+  - name: matomo-app
     protocol: TCP
     port: 8000
     targetPort: 80
