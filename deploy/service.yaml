@@ -22,9 +22,9 @@ metadata:
   namespace: matomo
 spec:
   selector:
-    app: db
+    app: matomo-db
   ports:
-  - name: db
+  - name: matomo-db
     protocol: TCP
     port: 3306
     targetPort: 3306
