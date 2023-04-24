@@ -17,8 +17,8 @@ spec:
         configMap:
           name: matomo-config
           items:
-            - key: config.ini.php
-              path: config.ini.php
+            - key: global.ini.php
+              path: config/global.ini.php
       containers:
         - name: matomo-app
           image: matomo:4.13.1
