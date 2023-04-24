@@ -12,6 +12,13 @@ spec:
       labels:
         app: matomo-app
     spec:
+      volumes:
+      - name: matomoconfig
+        configMap:
+          name: matomo-phpini-config
+          items:
+            - key: config.ini.php
+              path: /var/www/html/config/config.ini.php
       containers:
         - name: matomo-app
           image: matomo:4.13.1
