@@ -15,7 +15,7 @@ spec:
       volumes:
       - name: matomoconfig
         configMap:
-          name: matomo-phpini-config
+          name: matomo-config
           items:
             - key: config.ini.php
               path: config.ini.php

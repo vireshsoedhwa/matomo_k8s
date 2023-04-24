@@ -6,13 +6,5 @@ metadata:
 data:
   MATOMO_DATABASE_HOST: matomo-db-svc
   MATOMO_DATABASE_DBNAME: proddb
-
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: matomo-phpini-config
-  namespace: matomo
-data:
   config.ini.php: |
     enable_installer = 0
